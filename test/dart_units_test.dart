@@ -28,4 +28,11 @@ void main() {
       closeTo(404.686, testDelta),
     );
   });
+
+  test('Speed', () {
+    expect(
+      Speed.speedOfLight.inUnit(Speed.meterPerSecond),
+      closeTo(299792458, testDelta),
+    );
+  });
 }

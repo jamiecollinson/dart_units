@@ -2,7 +2,7 @@ part of '../dart_units.dart';
 
 class AreaDensity with Unit<AreaDensity> {
   @override
-  final num _value; // kg/m^2
+  final num _value;
 
   const AreaDensity.kgsPerSquareMeter(this._value);
 
