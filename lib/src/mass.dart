@@ -1,10 +1,8 @@
 part of '../dart_units.dart';
 
-class Mass with Unit<Mass> {
-  @override
-  final num _value; // kg
-
-  const Mass.kilograms(this._value);
+// In kilograms (kg)
+class Mass extends Unit<Mass> {
+  const Mass.kilograms(num value) : super(value);
 
   static Mass
       // SI
@@ -59,6 +57,6 @@ class Mass with Unit<Mass> {
       centalHundredweight = shortHundredweight, // british
       imperialHundredweight = longHundredweight; // british
 
-  operator *(num x) => Mass.kilograms(_value * x);
-  operator /(num x) => Mass.kilograms(_value / x);
+  @override
+  Mass _createRaw(num value) => Mass.kilograms(value);
 }

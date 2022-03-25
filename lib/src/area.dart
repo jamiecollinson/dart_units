@@ -1,15 +1,13 @@
 part of '../dart_units.dart';
 
-class Area with Unit<Area> {
-  @override
-  final num _value; // m^2
-
-  const Area.squareMeters(this._value);
+// In square meters (m^2)
+class Area extends Unit<Area> {
+  Area.squareMeters(num value) : super(value);
 
   Area.fromSideLengths({
     required Length x,
     required Length y,
-  }) : _value = x._value * y._value;
+  }) : super(x._value * y._value);
 
   static Area
       // SI
@@ -23,7 +21,7 @@ class Area with Unit<Area> {
       squareMillimeter = squareMeter * 1e-6,
       squareCentimeter = squareMeter * 1e-4,
       squareDecimeter = squareMeter * 1e-2,
-      squareMeter = const Area.squareMeters(1),
+      squareMeter = Area.squareMeters(1),
       squareDecameter = squareMeter * 1e2,
       squareHectometer = squareMeter * 1e4,
       squareKilometer = squareMeter * 1e6,
@@ -62,6 +60,6 @@ class Area with Unit<Area> {
       hectare = squareHectometer,
       squarePerch = squareRod;
 
-  operator *(num x) => Area.squareMeters(_value * x);
-  operator /(num x) => Area.squareMeters(_value / x);
+  @override
+  Area _createRaw(num value) => Area.squareMeters(value);
 }

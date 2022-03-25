@@ -4,11 +4,9 @@
 
 part of '../dart_units.dart';
 
-class Length with Unit<Length> {
-  @override
-  final num _value; // Meters
-
-  const Length.meters(this._value);
+// In meters (m)
+class Length extends Unit<Length> {
+  const Length.meters(value) : super(value);
 
   static Length
       // SI
@@ -61,6 +59,6 @@ class Length with Unit<Length> {
   Area rectangularAreaWith(Length other) =>
       Area.squareMeters(_value * other._value);
 
-  operator *(num x) => Length.meters(_value * x);
-  operator /(num x) => Length.meters(_value / x);
+  @override
+  Length _createRaw(num value) => Length.meters(value);
 }

@@ -1,16 +1,14 @@
 part of '../dart_units.dart';
 
+// meters per second squared (m/s^2)
 class Acceleration extends Unit<Acceleration> {
-  @override
-  final num _value; // meters per second squared (m/s^2)
-
-  Acceleration.metersPerSecondSquared(this._value);
+  Acceleration.metersPerSecondSquared(num value) : super(value);
 
   Acceleration({
     required Speed speed,
     required Duration duration,
-  }) : _value = speed.inUnit(Speed.meterPerSecond) /
-            duration.inUnit(Duration.second);
+  }) : super(speed.inUnit(Speed.meterPerSecond) /
+            duration.inUnit(Duration.second));
 
   static Acceleration
       // SI
@@ -23,6 +21,7 @@ class Acceleration extends Unit<Acceleration> {
       // alias
       gal = centimeterPerSecondSquared;
 
-  operator *(num x) => Acceleration.metersPerSecondSquared(_value * x);
-  operator /(num x) => Acceleration.metersPerSecondSquared(_value / x);
+  @override
+  Acceleration _createRaw(num value) =>
+      Acceleration.metersPerSecondSquared(value);
 }

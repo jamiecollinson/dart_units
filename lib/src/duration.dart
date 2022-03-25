@@ -1,10 +1,8 @@
 part of '../dart_units.dart';
 
-class Duration with Unit<Duration> {
-  @override
-  final num _value; // seconds (s)
-
-  const Duration.seconds(this._value);
+// In seconds (s)
+class Duration extends Unit<Duration> {
+  const Duration.seconds(num value) : super(value);
 
   static Duration
       // SI
@@ -38,6 +36,6 @@ class Duration with Unit<Duration> {
       thirtyDayMonth = day * 30,
       julianYear = day * 365.25;
 
-  operator *(num x) => Duration.seconds(_value * x);
-  operator /(num x) => Duration.seconds(_value / x);
+  @override
+  Duration _createRaw(num value) => Duration.seconds(value);
 }

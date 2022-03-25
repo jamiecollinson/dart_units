@@ -1,15 +1,13 @@
 part of '../dart_units.dart';
 
-class AreaDensity with Unit<AreaDensity> {
-  @override
-  final num _value;
-
-  const AreaDensity.kgsPerSquareMeter(this._value);
+// In kilograms per meter squared (kg/m^2)
+class AreaDensity extends Unit<AreaDensity> {
+  const AreaDensity.kgsPerSquareMeter(num value) : super(value);
 
   AreaDensity({
     required Mass mass,
     required Area area,
-  }) : _value = mass.inUnit(Mass.kilogram) / area.inUnit(Area.squareMeter);
+  }) : super(mass.inUnit(Mass.kilogram) / area.inUnit(Area.squareMeter));
 
   static AreaDensity
       // SI
@@ -36,6 +34,6 @@ class AreaDensity with Unit<AreaDensity> {
         area: Area.hectare,
       ));
 
-  operator *(num x) => AreaDensity.kgsPerSquareMeter(_value * x);
-  operator /(num x) => AreaDensity.kgsPerSquareMeter(_value / x);
+  @override
+  AreaDensity _createRaw(num value) => AreaDensity.kgsPerSquareMeter(value);
 }

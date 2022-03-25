@@ -1,15 +1,13 @@
 part of '../dart_units.dart';
 
-class Speed with Unit<Speed> {
-  @override
-  final num _value; // meters per second (m/s)
-
-  const Speed.metersPerSecond(this._value);
+// In meters per second (m/s)
+class Speed extends Unit<Speed> {
+  const Speed.metersPerSecond(num value) : super(value);
 
   Speed({
     required Length length,
     required Duration duration,
-  }) : _value = length._value / duration._value;
+  }) : super(length._value / duration._value);
 
   static Speed meterPerSecond = const Speed.metersPerSecond(1e0),
       kilometerPerHour = meterPerSecond * 0.277778,
@@ -18,6 +16,6 @@ class Speed with Unit<Speed> {
       knot = meterPerSecond * 0.514444,
       speedOfLight = meterPerSecond * 299792458;
 
-  operator *(num x) => Speed.metersPerSecond(_value * x);
-  operator /(num x) => Speed.metersPerSecond(_value / x);
+  @override
+  Speed _createRaw(num value) => Speed.metersPerSecond(value);
 }
