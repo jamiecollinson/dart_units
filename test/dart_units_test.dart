@@ -35,4 +35,22 @@ void main() {
       closeTo(299792458, testDelta),
     );
   });
+
+  test('Acceleration', () {
+    expect(
+      Acceleration(
+        speed: Speed.milePerHour * 100,
+        duration: Duration.hour,
+      ).inUnit(Acceleration.meterPerSecondSquared),
+      closeTo(0.0124178, testDelta),
+    );
+
+    expect(
+      Acceleration.standardGravity.inUnit(Acceleration(
+        speed: Speed.footPerSecond,
+        duration: Duration.second,
+      )),
+      closeTo(32.174, testDelta),
+    );
+  });
 }
