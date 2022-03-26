@@ -7,7 +7,7 @@ class Area extends Unit<Area> {
   Area.fromSideLengths({
     required Length x,
     required Length y,
-  }) : super(x._value * y._value);
+  }) : super(x.inUnit(Length.meter) * y.inUnit(Length.meter));
 
   static Area
       // SI

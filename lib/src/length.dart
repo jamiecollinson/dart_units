@@ -21,7 +21,7 @@ class Length extends Unit<Length> {
       millimeter = meter * 1e-3,
       centimeter = meter * 1e-2,
       decimeter = meter * 1e-1,
-      meter = const Length.meters(1),
+      meter = const Length.meters(1e0),
       decameter = meter * 1e1,
       hectometer = meter * 1e2,
       kilometer = meter * 1e3,
@@ -31,8 +31,8 @@ class Length extends Unit<Length> {
       terameter = meter * 1e12,
       petameter = meter * 1e15,
       exameter = meter * 1e18,
-      zettameter = meter * 1e21,
-      yottameter = meter * 1e24,
+      zettameter = meter * zetta,
+      yottameter = meter * yotta,
 
       // US
       inch = meter * 0.0254,

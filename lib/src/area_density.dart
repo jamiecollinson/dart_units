@@ -25,14 +25,8 @@ class AreaDensity extends Unit<AreaDensity> {
 
   // Convenience functions
   num get inKgsPerSquareMeter => _value;
-  num get inKgsPerAcre => inUnit(AreaDensity(
-        mass: Mass.kilogram,
-        area: Area.acre,
-      ));
-  num get inTonnesPerHectare => inUnit(AreaDensity(
-        mass: Mass.tonne,
-        area: Area.hectare,
-      ));
+  num get inKgsPerAcre => inUnit(kgPerAcre);
+  num get inTonnesPerHectare => inUnit(tonnePerHectare);
 
   @override
   AreaDensity _createRaw(num value) => AreaDensity.kgsPerSquareMeter(value);

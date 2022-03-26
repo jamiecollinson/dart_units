@@ -53,4 +53,11 @@ void main() {
       closeTo(32.174, testDelta),
     );
   });
+
+  test('Pressure', () {
+    expect(
+      Pressure(force: Force.newton, area: Area.squareMeter),
+      Pressure.pascal,
+    );
+  });
 }
