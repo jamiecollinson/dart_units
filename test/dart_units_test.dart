@@ -27,12 +27,26 @@ void main() {
           .inUnit(AreaDensity(mass: Mass.kilogram, area: Area.acre)),
       closeTo(404.686, testDelta),
     );
+
+    expect(
+      (AreaDensity.tonnePerHectare * 12).inKgsPerAcre,
+      closeTo(4856.227, testDelta),
+    );
   });
 
   test('Speed', () {
     expect(
       Speed.speedOfLight.inUnit(Speed.meterPerSecond),
       closeTo(299792458, testDelta),
+    );
+
+    expect(Speed.milePerHour.inUnit(Speed.kilometerPerHour),
+        closeTo(1.609, testDelta));
+
+    expect(
+      Speed(length: Length.meter * 100, duration: Duration.seconds(9))
+          .inUnit(Speed.kilometerPerHour),
+      closeTo(40, testDelta),
     );
   });
 
