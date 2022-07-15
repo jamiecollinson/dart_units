@@ -74,4 +74,48 @@ void main() {
       Pressure.pascal,
     );
   });
+
+  test('Data', () {
+    // base 10 (SI prefixes)
+    expect(Data.bit.inBits, 1e0);
+    expect(Data.bit.inUnit(Data.kilobit), 1e-3);
+    expect(Data.kilobit.inUnit(Data.megabit), 1e-3);
+    expect(Data.megabit.inUnit(Data.gigabit), 1e-3);
+    expect(Data.gigabit.inUnit(Data.terabit), 1e-3);
+    expect(Data.terabit.inUnit(Data.petabit), 1e-3);
+    expect(Data.petabit.inUnit(Data.exabit), 1e-3);
+    expect(Data.exabit.inUnit(Data.zettabit), 1e-3);
+    expect(Data.zettabit.inUnit(Data.yottabit), 1e-3);
+
+    expect(Data.bit.inBytes, 0.125);
+    expect(Data.byte.inBytes, 1e0);
+
+    expect(Data.byte.inUnit(Data.kilobyte), 1e-3);
+    expect(Data.kilobyte.inUnit(Data.megabyte), 1e-3);
+    expect(Data.megabyte.inUnit(Data.gigabyte), 1e-3);
+    expect(Data.gigabyte.inUnit(Data.terabyte), 1e-3);
+    expect(Data.terabyte.inUnit(Data.petabyte), 1e-3);
+    expect(Data.petabyte.inUnit(Data.exabyte), 1e-3);
+    expect(Data.exabyte.inUnit(Data.zettabyte), 1e-3);
+    expect(Data.zettabyte.inUnit(Data.yottabyte), 1e-3);
+
+    // base 2 (IEC prefixes)
+    expect(Data.bit.inUnit(Data.kibibit), 0.0009765625);
+    expect(Data.kibibit.inUnit(Data.mebibit), 0.0009765625);
+    expect(Data.mebibit.inUnit(Data.gibibit), 0.0009765625);
+    expect(Data.gibibit.inUnit(Data.tebibit), 0.0009765625);
+    expect(Data.tebibit.inUnit(Data.pebibit), 0.0009765625);
+    expect(Data.pebibit.inUnit(Data.exbibit), 0.0009765625);
+    expect(Data.exbibit.inUnit(Data.zebibit), 0.0009765625);
+    expect(Data.zebibit.inUnit(Data.yobibit), 0.0009765625);
+
+    expect(Data.byte.inUnit(Data.kibibyte), 0.0009765625);
+    expect(Data.kibibyte.inUnit(Data.mebibyte), 0.0009765625);
+    expect(Data.mebibyte.inUnit(Data.gibibyte), 0.0009765625);
+    expect(Data.gibibyte.inUnit(Data.tebibyte), 0.0009765625);
+    expect(Data.tebibyte.inUnit(Data.pebibyte), 0.0009765625);
+    expect(Data.pebibyte.inUnit(Data.exbibyte), 0.0009765625);
+    expect(Data.exbibyte.inUnit(Data.zebibyte), 0.0009765625);
+    expect(Data.zebibyte.inUnit(Data.yobibyte), 0.0009765625);
+  });
 }
