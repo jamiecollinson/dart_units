@@ -29,6 +29,11 @@ void main() {
     );
 
     expect(
+      (AreaDensity.kgPerAcre * 10).inTonnesPerHectare,
+      closeTo(0.0247, testDelta),
+    );
+
+    expect(
       (AreaDensity.tonnePerHectare * 12).inKgsPerAcre,
       closeTo(4856.227, testDelta),
     );
@@ -44,7 +49,7 @@ void main() {
         closeTo(1.609, testDelta));
 
     expect(
-      Speed(length: Length.meter * 100, duration: Duration.seconds(9))
+      Speed(length: Length.meter * 100, duration: const Duration.seconds(9))
           .inUnit(Speed.kilometerPerHour),
       closeTo(40, testDelta),
     );
