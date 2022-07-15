@@ -118,4 +118,65 @@ void main() {
     expect(Data.exbibyte.inUnit(Data.zebibyte), 0.0009765625);
     expect(Data.zebibyte.inUnit(Data.yobibyte), 0.0009765625);
   });
+
+  test('DataRate', () {
+    // base 10 (SI prefixes)
+    expect(DataRate.bitPerSecond.inBitsPerSecond, 1e0);
+    expect(DataRate.bitPerSecond.inUnit(DataRate.kilobitPerSecond), 1e-3);
+    expect(DataRate.kilobitPerSecond.inUnit(DataRate.megabitPerSecond), 1e-3);
+    expect(DataRate.megabitPerSecond.inUnit(DataRate.gigabitPerSecond), 1e-3);
+    expect(DataRate.gigabitPerSecond.inUnit(DataRate.terabitPerSecond), 1e-3);
+    expect(DataRate.terabitPerSecond.inUnit(DataRate.petabitPerSecond), 1e-3);
+    expect(DataRate.petabitPerSecond.inUnit(DataRate.exabitPerSecond), 1e-3);
+    expect(DataRate.exabitPerSecond.inUnit(DataRate.zettabitPerSecond), 1e-3);
+    expect(DataRate.zettabitPerSecond.inUnit(DataRate.yottabitPerSecond), 1e-3);
+
+    expect(DataRate.bitPerSecond.inBytesPerSecond, 0.125);
+    expect(DataRate.bytePerSecond.inBytesPerSecond, 1e0);
+
+    expect(DataRate.bytePerSecond.inUnit(DataRate.kilobytePerSecond), 1e-3);
+    expect(DataRate.kilobytePerSecond.inUnit(DataRate.megabytePerSecond), 1e-3);
+    expect(DataRate.megabytePerSecond.inUnit(DataRate.gigabytePerSecond), 1e-3);
+    expect(DataRate.gigabytePerSecond.inUnit(DataRate.terabytePerSecond), 1e-3);
+    expect(DataRate.terabytePerSecond.inUnit(DataRate.petabytePerSecond), 1e-3);
+    expect(DataRate.petabytePerSecond.inUnit(DataRate.exabytePerSecond), 1e-3);
+    expect(DataRate.exabytePerSecond.inUnit(DataRate.zettabytePerSecond), 1e-3);
+    expect(
+        DataRate.zettabytePerSecond.inUnit(DataRate.yottabytePerSecond), 1e-3);
+
+    // base 2 (IEC prefixes)
+    expect(
+        DataRate.bitPerSecond.inUnit(DataRate.kibibitPerSecond), 0.0009765625);
+    expect(DataRate.kibibitPerSecond.inUnit(DataRate.mebibitPerSecond),
+        0.0009765625);
+    expect(DataRate.mebibitPerSecond.inUnit(DataRate.gibibitPerSecond),
+        0.0009765625);
+    expect(DataRate.gibibitPerSecond.inUnit(DataRate.tebibitPerSecond),
+        0.0009765625);
+    expect(DataRate.tebibitPerSecond.inUnit(DataRate.pebibitPerSecond),
+        0.0009765625);
+    expect(DataRate.pebibitPerSecond.inUnit(DataRate.exbibitPerSecond),
+        0.0009765625);
+    expect(DataRate.exbibitPerSecond.inUnit(DataRate.zebibitPerSecond),
+        0.0009765625);
+    expect(DataRate.zebibitPerSecond.inUnit(DataRate.yobibitPerSecond),
+        0.0009765625);
+
+    expect(DataRate.bytePerSecond.inUnit(DataRate.kibibytePerSecond),
+        0.0009765625);
+    expect(DataRate.kibibytePerSecond.inUnit(DataRate.mebibytePerSecond),
+        0.0009765625);
+    expect(DataRate.mebibytePerSecond.inUnit(DataRate.gibibytePerSecond),
+        0.0009765625);
+    expect(DataRate.gibibytePerSecond.inUnit(DataRate.tebibytePerSecond),
+        0.0009765625);
+    expect(DataRate.tebibytePerSecond.inUnit(DataRate.pebibytePerSecond),
+        0.0009765625);
+    expect(DataRate.pebibytePerSecond.inUnit(DataRate.exbibytePerSecond),
+        0.0009765625);
+    expect(DataRate.exbibytePerSecond.inUnit(DataRate.zebibytePerSecond),
+        0.0009765625);
+    expect(DataRate.zebibytePerSecond.inUnit(DataRate.yobibytePerSecond),
+        0.0009765625);
+  });
 }
