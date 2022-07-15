@@ -13,3 +13,4 @@ part 'src/mass.dart';
 part 'src/pressure.dart';
 part 'src/speed.dart';
 part 'src/unit.dart';
+part 'src/angle.dart';
