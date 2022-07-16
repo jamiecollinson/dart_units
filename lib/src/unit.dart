@@ -19,6 +19,9 @@ abstract class Unit<T extends Unit<T>> implements Comparable<Unit> {
   @override
   int get hashCode => _value.hashCode;
 
+  @override
+  String toString() => _value.toString();
+
   bool operator >(T other) => compareTo(other) > 0;
   bool operator >=(T other) => compareTo(other) >= 0;
   bool operator <(T other) => compareTo(other) < 1;
