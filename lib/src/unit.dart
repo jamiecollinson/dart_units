@@ -1,7 +1,6 @@
 part of '../dart_units.dart';
 
 abstract class Unit<T extends Unit<T>> implements Comparable<Unit> {
-  //ensure that we are not comparing units that aren't the same
   final num _value; // Unit's [_value] in base (SI) units
 
   const Unit(this._value);

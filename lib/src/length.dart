@@ -57,7 +57,7 @@ class Length extends Unit<Length> {
       lightYear = meter * 9460730472580800,
       parsec = astronomicalUnit * (648000 / pi);
 
-//convenience functions
+  // convenience functions
   get inMeters => _value;
   get inMiles => inUnit(mile);
   get inKilometers => inUnit(kilometer);

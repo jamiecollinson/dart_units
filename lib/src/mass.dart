@@ -2,7 +2,6 @@ part of '../dart_units.dart';
 
 // In kilograms (kg)
 class Mass extends Unit<Mass> {
-  //inherits the unit class
   const Mass.kilograms(num value) : super(value);
 
   static Mass

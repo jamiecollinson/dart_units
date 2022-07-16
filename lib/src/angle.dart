@@ -20,7 +20,7 @@ class Angle extends Unit<Angle> {
       milliarcsecond = arcsecond * 1e-3,
       microarcsecond = arcsecond * 1e-6;
 
-//convenience functions
+  // convenience functions
   get inRadians => _value;
   get inDegrees => inUnit(degree);
 
