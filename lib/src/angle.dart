@@ -24,6 +24,16 @@ class Angle extends Unit<Angle> {
   get inRadians => _value;
   get inDegrees => inUnit(degree);
 
+  /// Restricts the angle to a range, with [divisor] defaulting to a circle
+  Angle mod(
+          {Angle divisor = const Angle.radians(2 * pi),
+          bool preserveRotation = false}) =>
+      preserveRotation && _value < 0 && _value % divisor._value != 0
+          ? _createRaw(_value % divisor._value - divisor._value)
+          : _createRaw(_value % divisor._value);
+
   @override
   Angle _createRaw(num value) => Angle.radians(value);
 }
+
+var arcminute = Angle.arcminute;

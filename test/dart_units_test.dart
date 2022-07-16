@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dart_units/dart_units.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -78,5 +80,39 @@ void main() {
       Pressure(force: Force.newton, area: Area.squareMeter),
       Pressure.pascal,
     );
+  });
+
+  test("Angle", () {
+    // test mod behaviour - range is [0, 2*pi]
+    expect((Angle.radian * (1 * pi)).mod(), Angle.radian * (1 * pi));
+    expect((Angle.radian * (2 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (3 * pi)).mod(), Angle.radians(1 * pi));
+    expect((Angle.radian * (4 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (-1 * pi)).mod(), Angle.radian * pi);
+    expect((Angle.radian * (-2 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (-3 * pi)).mod(), Angle.radians(pi));
+    expect((Angle.radian * (-4 * pi)).mod(), Angle.radians(0));
+
+    expect((Angle.degree * -180).mod(), Angle.degree * 180);
+    expect((Angle.degree * -90).mod(), Angle.degree * 270);
+    expect((Angle.degree * -270).mod(), Angle.degree * 90);
+
+    // test mod behaviour with preserved rotation - i.e. range is [-2*pi, 2*pi]
+    expect((Angle.radian * (1 * pi)).mod(preserveRotation: true),
+        Angle.radian * (1 * pi));
+    expect((Angle.radian * (2 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (3 * pi)).mod(preserveRotation: true),
+        Angle.radians(1 * pi));
+    expect((Angle.radian * (4 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (-1 * pi)).mod(preserveRotation: true),
+        Angle.radian * (-1 * pi));
+    expect((Angle.radian * (-2 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (-3 * pi)).mod(preserveRotation: true),
+        Angle.radians(-1 * pi));
+    expect((Angle.radian * (-4 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
   });
 }
