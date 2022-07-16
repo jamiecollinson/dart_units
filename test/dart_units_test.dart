@@ -1,5 +1,5 @@
 import 'package:dart_units/dart_units.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 const testDelta = 1e-3;
 
