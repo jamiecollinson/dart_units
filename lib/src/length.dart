@@ -9,6 +9,7 @@ class Length extends Unit<Length> {
   const Length.meters(value) : super(value);
 
   static Length
+
       // SI
       yoctometer = meter * 1e-24,
       zeptometer = meter * 1e-21,
@@ -55,6 +56,11 @@ class Length extends Unit<Length> {
       astronomicalUnit = meter * 149597870700,
       lightYear = meter * 9460730472580800,
       parsec = astronomicalUnit * (648000 / pi);
+
+  // convenience functions
+  get inMeters => _value;
+  get inMiles => inUnit(mile);
+  get inKilometers => inUnit(kilometer);
 
   Area rectangularAreaWith(Length other) =>
       Area.squareMeters(_value * other._value);

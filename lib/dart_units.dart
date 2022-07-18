@@ -3,6 +3,7 @@ library dart_units;
 import 'dart:math';
 
 part 'src/acceleration.dart';
+part 'src/angle.dart';
 part 'src/area.dart';
 part 'src/area_density.dart';
 part 'src/constants.dart';

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dart_units/dart_units.dart';
 import 'package:test/test.dart';
 
@@ -29,6 +31,11 @@ void main() {
     );
 
     expect(
+      (AreaDensity.kgPerAcre * 10).inTonnesPerHectare,
+      closeTo(0.0247, testDelta),
+    );
+
+    expect(
       (AreaDensity.tonnePerHectare * 12).inKgsPerAcre,
       closeTo(4856.227, testDelta),
     );
@@ -44,7 +51,7 @@ void main() {
         closeTo(1.609, testDelta));
 
     expect(
-      Speed(length: Length.meter * 100, duration: Duration.seconds(9))
+      Speed(length: Length.meter * 100, duration: const Duration.seconds(9))
           .inUnit(Speed.kilometerPerHour),
       closeTo(40, testDelta),
     );
@@ -178,5 +185,72 @@ void main() {
         0.0009765625);
     expect(DataRate.zebibytePerSecond.inUnit(DataRate.yobibytePerSecond),
         0.0009765625);
+  });
+
+  test("Angle", () {
+    // test mod behaviour - range is [0, 2*pi]
+    expect((Angle.radian * (1 * pi)).mod(), Angle.radian * (1 * pi));
+    expect((Angle.radian * (2 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (3 * pi)).mod(), Angle.radians(1 * pi));
+    expect((Angle.radian * (4 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (-1 * pi)).mod(), Angle.radian * pi);
+    expect((Angle.radian * (-2 * pi)).mod(), Angle.radians(0));
+    expect((Angle.radian * (-3 * pi)).mod(), Angle.radians(pi));
+    expect((Angle.radian * (-4 * pi)).mod(), Angle.radians(0));
+
+    expect((Angle.degree * -180).mod(), Angle.degree * 180);
+    expect((Angle.degree * -90).mod(), Angle.degree * 270);
+    expect((Angle.degree * -270).mod(), Angle.degree * 90);
+
+    // test mod behaviour with preserved rotation - i.e. range is [-2*pi, 2*pi]
+    expect((Angle.radian * (1 * pi)).mod(preserveRotation: true),
+        Angle.radian * (1 * pi));
+    expect((Angle.radian * (2 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (3 * pi)).mod(preserveRotation: true),
+        Angle.radians(1 * pi));
+    expect((Angle.radian * (4 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (-1 * pi)).mod(preserveRotation: true),
+        Angle.radian * (-1 * pi));
+    expect((Angle.radian * (-2 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+    expect((Angle.radian * (-3 * pi)).mod(preserveRotation: true),
+        Angle.radians(-1 * pi));
+    expect((Angle.radian * (-4 * pi)).mod(preserveRotation: true),
+        Angle.radians(0));
+
+    expect(Angle.zeptoradian.inUnit(Angle.yoctoradian), 1e3);
+    expect(
+        Angle.attoradian.inUnit(Angle.zeptoradian), closeTo(1000, testDelta));
+    expect(
+        Angle.femtoradian.inUnit(Angle.attoradian), closeTo(1000, testDelta));
+    expect(
+        Angle.pictoradian.inUnit(Angle.femtoradian), closeTo(1000, testDelta));
+    expect(
+        Angle.nanoradian.inUnit(Angle.pictoradian), closeTo(1000, testDelta));
+    expect(
+        Angle.microradian.inUnit(Angle.nanoradian), closeTo(1000, testDelta));
+    expect(
+        Angle.milliradian.inUnit(Angle.microradian), closeTo(1e3, testDelta));
+    expect(Angle.radian.inUnit(Angle.milliradian), closeTo(1e3, testDelta));
+    expect(Angle.radian.inUnit(Angle.centiradian), closeTo(1e2, testDelta));
+    expect(Angle.radian.inUnit(Angle.deciradian), closeTo(1e1, testDelta));
+    expect(Angle.radian.inUnit(Angle.radian), closeTo(1e0, testDelta));
+
+    expect(Angle.radian.inUnit(Angle.degree),
+        closeTo(57.295779513082321, testDelta));
+    expect(Angle.degree.inUnit(Angle.milliradian),
+        closeTo(17.453292519943295, testDelta));
+    expect(Angle.arcminute.inUnit(Angle.microradian),
+        closeTo(290.8882086657216, testDelta));
+    expect(Angle.arcsecond.inUnit(Angle.microradian),
+        closeTo(4.84813681109536, testDelta));
+    expect(Angle.degree.inUnit(Angle.arcminute), closeTo(60, testDelta));
+    expect(Angle.arcminute.inUnit(Angle.arcsecond), closeTo(60, testDelta));
+    expect(
+        Angle.arcsecond.inUnit(Angle.milliarcsecond), closeTo(1e3, testDelta));
+    expect(
+        Angle.arcsecond.inUnit(Angle.microarcsecond), closeTo(1e6, testDelta));
   });
 }
