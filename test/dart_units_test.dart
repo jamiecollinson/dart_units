@@ -255,6 +255,11 @@ void main() {
   });
 
   test("Volume", () {
+    expect(Volume.fromSides(x: Length.meter, y: Length.meter, z: Length.meter),
+        Volume.cubicmeter);
+    expect(Volume.fromArea(area: Area.squareMeter, height: Length.meter * 2),
+        Volume.cubicmeter * 2);
+
     expect(
         Volume.zeptoliter.inUnit(Volume.yoctoliter), closeTo(1e3, testDelta));
     expect(Volume.attoliter.inUnit(Volume.zeptoliter), closeTo(1e3, testDelta));

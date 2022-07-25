@@ -1,7 +1,14 @@
 part of '../dart_units.dart';
 
+/// In cubic meters (m^3)
 class Volume extends Unit<Volume> {
   const Volume.cubicMeters(num value) : super(value);
+
+  Volume.fromSides({required Length x, required Length y, required Length z})
+      : super(x.inMeters * y.inMeters * z.inMeters);
+
+  Volume.fromArea({required Area area, required Length height})
+      : super(area.inUnit(Area.squareMeter) * height.inMeters);
 
   static Volume cubicyoctometer = cubicmeter * 1e-72,
       cubiczeptometer = cubicmeter * 1e-63,
