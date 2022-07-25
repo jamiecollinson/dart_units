@@ -267,7 +267,7 @@ void main() {
 
     expect(Volume.liter.inUnit(Volume.milliliter), closeTo(1e3, testDelta));
     expect(Volume.liter.inUnit(Volume.centiliter), closeTo(1e2, testDelta));
-    //expect(Volume.liter.inUnit(Volume.deciliter), closeTo(1e1, testDelta));
+    expect(Volume.liter.inUnit(Volume.deciliter), closeTo(1e1, testDelta));
     expect(Volume.liter.inUnit(Volume.liter), closeTo(1e0, testDelta));
     expect(Volume.liter.inUnit(Volume.decaliter), closeTo(1e-1, testDelta));
     expect(Volume.liter.inUnit(Volume.hectoliter), closeTo(1e-2, testDelta));
@@ -328,7 +328,7 @@ void main() {
         closeTo(1e-9, testDelta));
 
     expect(Volume.cubicFoot.inUnit(Volume.cubicInch), closeTo(1728, testDelta));
-    //expect(Volume.cubicFoot.inUnit(Volume.cubicFeet),closeTo(1e-9, testDelta));
+    expect(Volume.cubicFoot.inUnit(Volume.cubicFeet), closeTo(1e0, testDelta));
     expect(Volume.cubicFoot.inUnit(Volume.cubicYard),
         closeTo(0.037037037037037035, testDelta));
     expect(Volume.cubicYard.inUnit(Volume.cubicMile),
